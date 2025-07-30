@@ -1,0 +1,54 @@
+{
+  "name": "keeper-app",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "keywords": [],
+  "options": {
+    "allowedHosts": [
+      "http://localhost:5000"
+    ]
+  },
+  "main": "/src/index.js",
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^7.2.0",
+    "@mui/material": "^7.2.0",
+    "@react-spring/web": "^10.0.1",
+    "axios": "1.10.0",
+    "bcrypt": "^6.0.0",
+    "connect-pg-simple": "^10.0.0",
+    "cors": "2.8.5",
+    "date-fns": "^4.1.0",
+    "dotenv": "17.2.0",
+    "express": "5.1.0",
+    "express-session": "^1.18.2",
+    "icons-material": "^0.0.1-security",
+    "js-cookie": "^3.0.5",
+    "material": "^0.9.24",
+    "nodemon": "^3.1.10",
+    "pg": "^8.16.3",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-router-dom": "7.7.0",
+    "react-scripts": "^5.0.1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0",
+    "typescript": "^3.3.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "dev": "concurrently \"npm run start\" \"npm run start-node\""
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
