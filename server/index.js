@@ -107,10 +107,12 @@ app.post("/api/login", async (req, res) => {
         }
       } catch (error) {
         console.error("Error comparing passwords", error);
+        return res.status(400).json({ message: "Error comparing passwords" });
       }
     }
   } catch (error) {
     console.error("network failure", error);
+    return res.status(500).json({ message: "Unable to connect to postgres" });
   }
 });
 
