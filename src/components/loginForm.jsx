@@ -108,6 +108,9 @@ function Form(props) {
         }, 3000);
       }
       console.error("login failed: ", error);
+      props.sT("Login");
+      login.classList.remove("vis1");
+      bounce.classList.remove("bounce");
     }
   }
 

@@ -21,6 +21,7 @@ const db = new pg.Pool({
   database: process.env.DB_DATABASE,
   password: process.env.DB_PASSWORD,
   port: process.env.DB_PORT,
+  ssl: {},
 });
 app.use(
   session({
@@ -45,6 +46,28 @@ const port = 5000;
 app.use(express.json());
 
 const saltRounds = Number(process.env.SALTROUNDS);
+
+async function testDbConnection() {
+  try {
+    const client = await db.connect(); // Try to get a client from the pool
+    console.log("Successfully connected to PostgreSQL!");
+    client.release(); // Release the client back to the pool
+    return true;
+  } catch (err) {
+    console.error("Error connecting to PostgreSQL:", err.message);
+    return false;
+  }
+}
+
+// How to use it (you can call this in your server's startup)
+testDbConnection().then((isConnected) => {
+  if (!isConnected) {
+    console.log(
+      "Database connection failed at startup. Application may not function correctly."
+    );
+    // You might want to exit the process or take other actions here
+  }
+});
 
 app.post("/api/register", async (req, res) => {
   var { email_1, password } = req.body;
