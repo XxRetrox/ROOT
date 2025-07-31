@@ -122,9 +122,19 @@ app.post("/api/login", async (req, res) => {
           req.session.userId = result.rows[0].id;
           req.session.username = email;
           console.log("Login successful", req.session.userId);
-          return res
-            .status(200)
-            .json({ message: "Login successful", user: result.rows[0].id });
+          req.session.save((err) => {
+            if (err) {
+              console.error("Error saving session:", err);
+              return res
+                .status(500)
+                .json({ message: "Failed to save session" });
+            }
+            // If save is successful, then send the response
+            return res.status(200).json({
+              message: "Login successful",
+              user: result.rows[0].id,
+            });
+          });
         } else {
           return res.status(401).json({ message: "incorrect password" });
         }
