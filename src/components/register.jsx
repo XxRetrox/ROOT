@@ -7,7 +7,7 @@ function Register() {
       <div className="login1">
         <h1>
           Organise your notes/thoughs with us in a not so organise way through{" "}
-          <span>Keeper</span>
+          <span>Notæble</span>
         </h1>
         <RegForm></RegForm>
       </div>

@@ -62,7 +62,7 @@ function SideBar(props) {
     <div className={sidebarClass}>
       <div className="side-bar-header">
         <AutoStoriesIcon fontSize="medium"></AutoStoriesIcon>
-        <h2 className="side-bar-h2">Keeper</h2>
+        <h2 className="side-bar-h2">Notæble</h2>
         <button className="bnt-side-bar" onClick={toggleClose} type="button">
           <CancelIcon fontSize="medium"></CancelIcon>
         </button>

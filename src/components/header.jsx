@@ -7,7 +7,7 @@ function Header(props) {
       <button className="bnt-header" id="header-bnt" type="button">
         <AutoStoriesIcon fontSize="large"></AutoStoriesIcon>
       </button>
-      <h1>Keeper</h1>
+      <h1>Notæble</h1>
     </header>
   );
 }

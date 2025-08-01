@@ -49,26 +49,26 @@ function Body(props) {
     });
   }
 
-  // const loadNotes = useCallback(async () => {
-  //   if (!props.uId) return;
-  //   try {
-  //     const response = await axios.get(
-  //       `${process.env.REACT_APP_API_URL}/api/keeper/${props.uId}`,
-  //       { withCredentials: true }
-  //     );
-  //     const noteData = response.data.notes;
-  //     console.log(noteData);
-  //     setContents(() => {
-  //       return [...noteData];
-  //     });
-  //   } catch (error) {
-  //     console.error("Unable to get user notes:", error);
-  //   }
-  // }, [props.uId]);
+  const loadNotes = useCallback(async () => {
+    if (!props.uId) return;
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/api/keeper/${props.uId}`,
+        { withCredentials: true }
+      );
+      const noteData = response.data.notes;
+      console.log(noteData);
+      setContents(() => {
+        return [...noteData];
+      });
+    } catch (error) {
+      console.error("Unable to get user notes:", error);
+    }
+  }, [props.uId]);
 
-  // useEffect(() => {
-  //   loadNotes();
-  // }, [loadNotes]);
+  useEffect(() => {
+    loadNotes();
+  }, [loadNotes]);
 
   useEffect(() => {
     const checkAuthStatus = async () => {
