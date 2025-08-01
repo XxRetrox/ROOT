@@ -32,6 +32,7 @@ const db = new pg.Pool({
 });
 app.use(
   session({
+    name: "sid",
     store: new pgSession({
       pool: db,
       tableName: "session",
