@@ -49,7 +49,7 @@ app.use(
     cookie: {
       secure: true,
       httpOnly: true,
-      maxAge: 17280000,
+      maxAge: 172800000,
       sameSite: "none",
     },
   })
@@ -315,7 +315,7 @@ app.post("/api/log-out", (req, res) => {
     if (error) {
       console.log("Error login out:", error);
     } else {
-      res.clearCookie("connect.sid", { path: "/" });
+      res.clearCookie("sid", { path: "/" });
       console.log("Logged out successful");
       console.log(req.session);
       return res.status(200).json({ msg: "Logged out successful" });
