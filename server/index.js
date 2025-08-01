@@ -30,6 +30,9 @@ const db = new pg.Pool({
   port: process.env.DB_PORT,
   ssl: {},
 });
+
+app.set("trust proxy", 1);
+
 app.use(
   session({
     name: "sid",
