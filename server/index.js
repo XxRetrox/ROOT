@@ -5,6 +5,7 @@ import pg from "pg";
 import bcrypt from "bcrypt";
 import session from "express-session";
 import connectPgSimple from "connect-pg-simple";
+import cookieParser from "cookie-parser";
 
 const pgSession = connectPgSimple(session);
 const app = express();
@@ -47,6 +48,8 @@ app.use(
     },
   })
 );
+
+app.use(cookieParser());
 
 app.use((req, res, next) => {
   if (!req.session.regenerate) {
@@ -102,6 +105,16 @@ testDbConnection().then((isConnected) => {
     );
     // You might want to exit the process or take other actions here
   }
+});
+
+app.get("/test-cookie", (req, res) => {
+  res.cookie("testcookie", "123abc", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "None",
+    maxAge: 1000 * 60 * 5, // 5 minutes
+  });
+  res.status(200).json({ message: "Cookie should be set" });
 });
 
 app.post("/api/register", async (req, res) => {
