@@ -10,12 +10,12 @@ const pgSession = connectPgSimple(session);
 const app = express();
 app.use(express.json());
 
-app.use(
-  cors({
-    origin: ["http://localhost:3000", "https://notetable.netlify.app"],
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: ["http://localhost:3000", "https://notetable.netlify.app"],
+//     credentials: true,
+//   })
+// );
 env.config();
 const db = new pg.Pool({
   user: process.env.DB_USER,
