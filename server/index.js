@@ -39,7 +39,7 @@ app.use(
       secure: true,
       httpOnly: true,
       maxAge: 17280000,
-      sameSite: "None",
+      sameSite: "none",
     },
   })
 );
