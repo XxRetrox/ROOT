@@ -40,6 +40,7 @@ app.use(
       httpOnly: true,
       maxAge: 17280000,
       sameSite: "None",
+      domain: ".onrender.com",
     },
   })
 );
