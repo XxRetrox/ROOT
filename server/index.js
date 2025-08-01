@@ -179,13 +179,19 @@ app.post("/api/login", async (req, res) => {
                 .status(500)
                 .json({ message: "Failed to save session" });
             }
-            console.log("Session saved, sending response");
-            console.log("Response headers:", res.getHeaders());
+
             res.cookie("debug-session", "test", {
               httpOnly: true,
               secure: true,
               sameSite: "None",
             });
+            console.log("Session saved, sending response");
+            console.log("Response headers:", res.getHeaders());
+            console.log(
+              "Set-Cookie Header (manual):",
+              res.getHeader("Set-Cookie")
+            );
+
             // If save is successful, then send the response
             return res.status(200).json({
               message: "Login successful",
