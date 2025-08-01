@@ -40,7 +40,7 @@ app.use(
       httpOnly: true,
       maxAge: 17280000,
       sameSite: "None",
-      domain: ".onrender.com",
+      domain: "keeper-tr1n.onrender.com",
     },
   })
 );
