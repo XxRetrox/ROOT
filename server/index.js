@@ -8,6 +8,8 @@ import connectPgSimple from "connect-pg-simple";
 
 const pgSession = connectPgSimple(session);
 const app = express();
+app.use(express.json());
+
 app.use(
   cors({
     origin: ["http://localhost:3000", "https://notetable.netlify.app"],
@@ -36,14 +38,43 @@ app.use(
     cookie: {
       secure: true,
       httpOnly: true,
-      maxAge: 7200000,
+      maxAge: 17280000,
       sameSite: "None",
     },
   })
 );
-const port = 5000;
 
-app.use(express.json());
+app.use((req, res, next) => {
+  if (!req.session.regenerate) {
+    req.session.regenerate = (cb) => {
+      cb();
+    };
+  }
+  if (!req.session.save) {
+    req.session.save = (cb) => {
+      cb();
+    };
+  }
+  next();
+});
+
+app.use((req, res, next) => {
+  // This will run on every request *after* session middleware has run
+  console.log(
+    "After session middleware, req.session:",
+    JSON.stringify(req.session)
+  );
+  if (req.session && req.session.userId) {
+    console.log(
+      "userId found in session after middleware:",
+      req.session.userId
+    );
+  } else {
+    console.log("userId NOT found in session after middleware.");
+  }
+  next();
+});
+const port = 5000;
 
 const saltRounds = Number(process.env.SALTROUNDS);
 
