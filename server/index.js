@@ -11,17 +11,17 @@ const pgSession = connectPgSimple(session);
 const app = express();
 app.use(express.json());
 
-app.options(
-  "*",
-  cors({
-    origin: [
-      "http://localhost:3000",
-      "https://notetable.netlify.app",
-      "https://keeper-tr1n.onrender.com",
-    ],
-    credentials: true,
-  })
-);
+const corsOptions = {
+  origin: [
+    "http://localhost:3000",
+    "https://notetable.netlify.app",
+    "https://keeper-tr1n.onrender.com",
+  ],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+// app.options("*", cors(corsOptions));
 
 env.config();
 const db = new pg.Pool({
