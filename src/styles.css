@@ -305,6 +305,7 @@ footer p {
   z-index: 10;
   background-color: #f5ba13;
   background-image: url(../public/img/scribble-light.png);
+  overflow-y: hidden;
 }
 
 .login1 {
@@ -392,7 +393,7 @@ a {
   flex-direction: column;
   position: fixed;
   z-index: 100;
-  height: 100dvh;
+  height: 100vh;
   width: 400px;
   align-items: center;
   border-radius: 8px;
@@ -454,6 +455,7 @@ a {
 
 .visible {
   visibility: visible;
+  overflow-y: hidden;
 }
 
 .log-out {
@@ -591,7 +593,7 @@ a {
   }
   .delete {
     font-size: 8.5px;
-    left: 60%;
+    left: 82%;
     bottom: 5%;
   }
   h1 {
@@ -645,7 +647,7 @@ a {
   }
   .delete {
     font-size: 8.5px;
-    left: 60%;
+    left: 82%;
     bottom: 5%;
   }
 }

@@ -315,7 +315,7 @@ app.post("/api/log-out", (req, res) => {
     if (error) {
       console.log("Error login out:", error);
     } else {
-      res.clearCookie("sid", { path: "/" });
+      res.clearCookie("sid", { path: "/", secure: true, sameSite: "none" });
       console.log("Logged out successful");
       console.log(req.session);
       return res.status(200).json({ msg: "Logged out successful" });
@@ -345,6 +345,15 @@ app.patch("/api/update-note/:note_id", async (req, res) => {
     }
   } else {
     res.status(401).json({ is_logged: false });
+  }
+});
+
+app.post("/api/keep-alive", (req, res) => {
+  try {
+    console.log("Server active");
+    return res.status(200).json({ msg: "active" });
+  } catch (error) {
+    console.log("Error occured while keeping serve alive: ", error);
   }
 });
 

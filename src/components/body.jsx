@@ -36,7 +36,7 @@ function Body(props) {
       opacity: isView ? 1 : 0,
       transform: isView ? "scale(1)" : "scale(0)",
     }, // Target state based on `isVisible`
-    config: { mass: 1, tension: 300, friction: 20 }, // Customize spring physics
+    config: { mass: 1, tension: 350, friction: 19 }, // Customize spring physics
   });
 
   function handle(event) {
