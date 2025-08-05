@@ -6,7 +6,7 @@ function Register() {
     <div id="register" className="login">
       <div className="login1">
         <h1>
-          Organise your notes/thoughs with us in a not so organise way through{" "}
+          Organise your notes/thoughts with us in a not so organised way through{" "}
           <span>Notæble</span>
         </h1>
         <RegForm></RegForm>
